@@ -1,5 +1,20 @@
 [
   {
+    "type": "local_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "gap_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "test_case",
     "named": true,
     "fields": {},
@@ -39,6 +54,10 @@
           "named": true
         },
         {
+          "type": "local_statement",
+          "named": true
+        },
+        {
           "type": "test_case",
           "named": true
         }
@@ -46,7 +65,15 @@
     }
   },
   {
+    "type": "#@local",
+    "named": false
+  },
+  {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "gap_expression",
     "named": true
   },
   {

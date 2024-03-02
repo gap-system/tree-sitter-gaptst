@@ -5,17 +5,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "test_case"
-        },
-        {
-          "type": "REPEAT",
+          "type": "REPEAT1",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
                 "type": "SYMBOL",
                 "name": "test_case"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_statement"
               }
             ]
           }
@@ -26,6 +26,40 @@
             "type": "SYMBOL",
             "name": "comment"
           }
+        }
+      ]
+    },
+    "_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "comment"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "local_statement"
+            }
+          ]
+        }
+      ]
+    },
+    "local_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#@local"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gap_expression"
         }
       ]
     },
@@ -60,6 +94,10 @@
     "comment": {
       "type": "PATTERN",
       "value": "#\\n|#[^@\\n].*?\\n"
+    },
+    "gap_expression": {
+      "type": "PATTERN",
+      "value": ".*?\\n"
     }
   },
   "extras": [
@@ -80,7 +118,9 @@
       "name": "test_case_output"
     }
   ],
-  "inline": [],
+  "inline": [
+    "_statement"
+  ],
   "supertypes": []
 }
 

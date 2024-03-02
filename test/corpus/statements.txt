@@ -1,0 +1,184 @@
+=================
+Local statement 1
+=================
+
+#@local x, y
+
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+---
+
+(test_file
+  (local_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+=================
+Local statement 2
+=================
+
+#@local x, y
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+---
+
+(test_file
+  (local_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+=================
+Local statement 3
+=================
+
+# This is a local statement
+#@local x, y
+# Comment
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+---
+
+(test_file
+  (comment)
+  (local_statement
+    (gap_expression))
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+=================
+Local statement 4
+=================
+
+# This is a local statement
+#@local x, y
+
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# Hello
+gap> x*y;
+2
+
+---
+
+(test_file
+  (comment)
+  (local_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+=================
+Local statement 5
+=================
+
+# This is a local statement
+#@local x, y
+
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# This is a local statement
+#@local z
+
+# Hello
+gap> z:=10;
+gap> x*y*z;
+20
+
+---
+
+(test_file
+  (comment)
+  (local_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (comment)
+  (local_statement
+    (gap_expression))
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)

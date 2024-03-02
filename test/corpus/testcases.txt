@@ -334,3 +334,29 @@ gap> ## Comment
     (test_case_input)
     (test_case_output))
 )
+
+============
+Test case 12
+============
+
+# Source
+# tst/testbugfix-2013-08-21-t00295.tst
+# 2013/08/21 (MH)
+gap> . . . .
+Syntax error: Badly formed number: need a digit before or after the decimal po\
+int in stream:1
+. . . .
+^
+Syntax error: Record component name expected in stream:2
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
