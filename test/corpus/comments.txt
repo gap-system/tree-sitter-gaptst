@@ -11,8 +11,8 @@ gap> a:=2;
 (test_file
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -29,8 +29,8 @@ gap> a:=2;
 (test_file
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -49,8 +49,8 @@ gap> a:=2;
   (test_case
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -71,8 +71,8 @@ gap> a:=2;
     (comment)
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -94,8 +94,8 @@ gap> a:=2;
     (comment)
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -122,14 +122,14 @@ World
     (comment)
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -146,8 +146,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (comment)
 )
@@ -167,8 +167,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (comment)
   (comment)
@@ -194,13 +194,13 @@ gap> 2+2;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (comment)
   (comment)

@@ -16,14 +16,12 @@
 # <- keyword
 
 gap> 1+1;
-# <- keyword
 2
 
-# <- string
+# <- string.documentation
 
 # Another test case
 gap> Concatenation(
-# <- keyword
 > "a",
 > "b",
 > "Hello\n",
@@ -32,24 +30,24 @@ gap> Concatenation(
 abHello
 World
 
-# <- string
+# <- string.documentation
 
 #If statements
 #@if 2+2=4
 # <- keyword.conditional
 gap> Print(10);
-# <- keyword
+# <- keyword.debug
 10
 
-# <- string
+# <- string.documentation
 # Else clause
 #@else
 # <- keyword.conditional
 gap> Print(200);
-# <- keyword
+# <- keyword.debug
 200
 
-# <- string
+# <- string.documentation
 #@fi
 # <- keyword.conditional
 

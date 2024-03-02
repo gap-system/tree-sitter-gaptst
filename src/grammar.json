@@ -174,10 +174,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "gap_prompt"
-        },
-        {
-          "type": "SYMBOL",
           "name": "test_case_input"
         },
         {
@@ -186,9 +182,34 @@
         }
       ]
     },
-    "gap_prompt": {
-      "type": "STRING",
-      "value": "gap> "
+    "test_case_input": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "gap> "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "test_case_input_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "> "
+              },
+              {
+                "type": "SYMBOL",
+                "name": "test_case_input_line"
+              }
+            ]
+          }
+        }
+      ]
     },
     "comment": {
       "type": "CHOICE",
@@ -213,8 +234,26 @@
       ]
     },
     "gap_expression": {
-      "type": "PATTERN",
-      "value": ".*?\\n"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*?\\n"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^\\n]*?"
+            },
+            {
+              "type": "STRING",
+              "value": "\u0000"
+            }
+          ]
+        }
+      ]
     }
   },
   "extras": [
@@ -228,7 +267,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "test_case_input"
+      "name": "test_case_input_line"
     },
     {
       "type": "SYMBOL",

@@ -15,16 +15,16 @@ gap> x+y;
   (local_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -44,16 +44,16 @@ gap> x+y;
   (local_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input 
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -77,16 +77,16 @@ gap> x+y;
     (gap_expression))
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -113,21 +113,21 @@ gap> x*y;
   (local_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -158,28 +158,28 @@ gap> x*y*z;
   (local_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (comment)
   (local_statement
     (gap_expression))
   (test_case
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -208,21 +208,21 @@ gap> 1+1;
     (gap_expression)
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (comment)
   )
@@ -254,26 +254,26 @@ ab
     (gap_expression)
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (else_clause
       (test_case
-        (gap_prompt)
-        (test_case_input)
+        (test_case_input
+          (test_case_input_line))
         (test_case_output)))
   )
 )
@@ -306,27 +306,27 @@ ab
     (gap_expression)
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (comment)
     (else_clause
       (test_case
-        (gap_prompt)
-        (test_case_input)
+        (test_case_input
+          (test_case_input_line))
         (test_case_output)))
   )
 )
@@ -357,21 +357,21 @@ gap> 1+1;
     (gap_expression)
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (test_case
       (comment)
-      (gap_prompt)
-      (test_case_input)
+      (test_case_input
+        (test_case_input_line))
       (test_case_output))
     (comment)
     (else_clause)
@@ -395,8 +395,8 @@ gap> 2+2;
     (gap_expression)
     (else_clause
       (test_case
-        (gap_prompt)
-        (test_case_input)
+        (test_case_input
+          (test_case_input_line))
         (test_case_output))
     )
   )
@@ -421,8 +421,8 @@ gap> 2+2;
     (gap_expression)
     (else_clause
       (test_case
-        (gap_prompt)
-        (test_case_input)
+        (test_case_input
+          (test_case_input_line))
         (test_case_output))
     )
   )
@@ -460,8 +460,8 @@ gap> x+2;
   (exec_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -483,7 +483,7 @@ gap> x+y;
   (exec_statement
     (gap_expression))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )

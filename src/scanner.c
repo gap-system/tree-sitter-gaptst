@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <wctype.h>
 
-enum TokenType { TEST_CASE_INPUT, TEST_CASE_OUTPUT };
+enum TokenType { TEST_CASE_INPUT_LINE, TEST_CASE_OUTPUT };
 
 const bool DEBUG_MODE = false;
 const char *GAP_PROMPT = "gap> ";
@@ -26,37 +26,17 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
   bool empty_line_before = false;
   if (DEBUG_MODE) {
     printf("START\n");
-    printf("%d", valid_symbols[TEST_CASE_INPUT]);
+    printf("%d", valid_symbols[TEST_CASE_INPUT_LINE]);
     printf("%d", valid_symbols[TEST_CASE_OUTPUT]);
     printf("\n%c", lexer->lookahead);
   }
 
-  if (valid_symbols[TEST_CASE_INPUT] && !valid_symbols[TEST_CASE_OUTPUT]) {
+  if (valid_symbols[TEST_CASE_INPUT_LINE] && !valid_symbols[TEST_CASE_OUTPUT]) {
     new_line = false;
     while (lexer->lookahead) {
       if (new_line) {
         lexer->mark_end(lexer);
-        if (lexer->lookahead == '>') {
-          new_line = false;
-          skip(lexer);
-          if (DEBUG_MODE)
-            printf("%c", lexer->lookahead);
-          if (lexer->lookahead == ' ') {
-            skip(lexer);
-            if (DEBUG_MODE)
-              printf("%c", lexer->lookahead);
-            continue;
-          } else if (lexer->lookahead == '\t') {
-            if (DEBUG_MODE) {
-              printf("\n%d\n", false);
-              printf("\nENDING\n");
-            }
-            return false;
-          }
-        }
-        // New line without '> ' prompt, must be start
-        // of `test_case_output`
-        lexer->result_symbol = TEST_CASE_INPUT;
+        lexer->result_symbol = TEST_CASE_INPUT_LINE;
         if (DEBUG_MODE) {
           printf("\n%d\n", true);
           printf("\nENDING\n");
@@ -71,7 +51,7 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
     }
     // Ran out of input
     lexer->mark_end(lexer);
-    lexer->result_symbol = TEST_CASE_INPUT;
+    lexer->result_symbol = TEST_CASE_INPUT_LINE;
     if (DEBUG_MODE) {
       printf("\n%d\n", true);
       printf("\nENDING\n");
@@ -80,6 +60,20 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
   } else if (valid_symbols[TEST_CASE_OUTPUT]) {
     new_line = true;
     empty_line_before = false;
+    if (lexer->lookahead == '>') {
+      lexer->mark_end(lexer);
+      new_line = false;
+      advance(lexer);
+      if (DEBUG_MODE)
+        printf("%c", lexer->lookahead);
+      if (lexer->lookahead == ' ') {
+        if (DEBUG_MODE) {
+          printf("\n%d\n", false);
+          printf("\nENDING\n");
+        }
+        return false;
+      }
+    }
     while (lexer->lookahead) {
       if (empty_line_before && lexer->lookahead == '#') {
         lexer->mark_end(lexer);

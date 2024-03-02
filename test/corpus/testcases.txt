@@ -9,8 +9,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -28,12 +28,12 @@ World
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -57,16 +57,16 @@ Foobar
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -88,20 +88,20 @@ gap> 2+2;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -128,32 +128,32 @@ fail
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -166,8 +166,8 @@ gap> a:=2;;
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -181,8 +181,9 @@ gap> a:=\
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -199,8 +200,10 @@ gap> A:=[
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -221,12 +224,16 @@ gap> B:= Concatenation(
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -253,28 +260,28 @@ bar
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -296,16 +303,19 @@ gap> 1+1 # Comment
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line)
+      (test_case_input_line)
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -322,16 +332,16 @@ gap> ## Comment
 
 (test_file
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
   (test_case
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )
 
@@ -356,7 +366,7 @@ Syntax error: Record component name expected in stream:2
     (comment)
     (comment)
     (comment)
-    (gap_prompt)
-    (test_case_input)
+    (test_case_input
+      (test_case_input_line))
     (test_case_output))
 )

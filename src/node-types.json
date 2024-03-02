@@ -39,6 +39,11 @@
     }
   },
   {
+    "type": "gap_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -100,15 +105,26 @@
           "named": true
         },
         {
-          "type": "gap_prompt",
-          "named": true
-        },
-        {
           "type": "test_case_input",
           "named": true
         },
         {
           "type": "test_case_output",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "test_case_input",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "test_case_input_line",
           "named": true
         }
       ]
@@ -174,15 +190,15 @@
     "named": false
   },
   {
-    "type": "gap_expression",
-    "named": true
+    "type": "> ",
+    "named": false
   },
   {
-    "type": "gap_prompt",
-    "named": true
+    "type": "gap> ",
+    "named": false
   },
   {
-    "type": "test_case_input",
+    "type": "test_case_input_line",
     "named": true
   },
   {

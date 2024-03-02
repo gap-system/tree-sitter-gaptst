@@ -1,10 +1,14 @@
-(test_case_output) @string
+(test_case_output) @string.documentation
 
 [
- (gap_prompt)
  "#@local"
  "#@exec"
 ] @keyword
+
+[
+ "gap> "
+ "> "
+] @keyword.debug
 
 [
  "#@if"

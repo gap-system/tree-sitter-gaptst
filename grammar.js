@@ -6,7 +6,7 @@ module.exports = grammar({
   ],
 
   externals: $ => [
-    $.test_case_input,
+    $.test_case_input_line,
     // Note, `test_case_output` can match the empty string 
     $.test_case_output,
   ],
@@ -58,16 +58,26 @@ module.exports = grammar({
 
     test_case: $ => seq(
       repeat($.comment),
-      $.gap_prompt,
       $.test_case_input,
       $.test_case_output,
     ),
 
-    gap_prompt: _ => 'gap> ',
+    test_case_input: $ => seq(
+      'gap> ',
+      $.test_case_input_line,
+      repeat(seq(
+        '> ',
+        $.test_case_input_line,
+      )),
+    ),
+
     comment: _ => choice(
       /#\n|#[^@\n].*?\n/,
       seq(/#|#[^@\n].*?/, '\0')
     ),
-    gap_expression: _ => /.*?\n/,
+    gap_expression: _ => choice(
+      /[^\n]*?\n/,
+      seq(/[^\n]*?/, '\0'),
+    )
   }
 });
