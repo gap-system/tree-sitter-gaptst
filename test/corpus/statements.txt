@@ -182,3 +182,265 @@ gap> x*y*z;
     (test_case_input)
     (test_case_output))
 )
+
+=================
+If statement 1
+=================
+
+#@if x = 3
+# Comment
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# Hello
+gap> 1+1;
+2
+
+# World
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (comment)
+  )
+)
+
+=================
+If statement 2
+=================
+
+#@if x = 3
+# Comment
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# Hello
+gap> 1+1;
+2
+#@else
+gap> "ab";
+ab
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (else_clause
+      (test_case
+        (gap_prompt)
+        (test_case_input)
+        (test_case_output)))
+  )
+)
+
+=================
+If statement 3
+=================
+
+#@if x = 3
+# Comment
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# Hello
+gap> 1+1;
+2
+
+# World
+#@else
+gap> "ab";
+ab
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (comment)
+    (else_clause
+      (test_case
+        (gap_prompt)
+        (test_case_input)
+        (test_case_output)))
+  )
+)
+
+=================
+If statement 4
+=================
+
+#@if x = 3
+# Comment
+gap> x := 1;;
+gap> y := 2;;
+gap> x+y;
+3
+
+# Hello
+gap> 1+1;
+2
+
+# World
+#@else
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (test_case
+      (comment)
+      (gap_prompt)
+      (test_case_input)
+      (test_case_output))
+    (comment)
+    (else_clause)
+  )
+)
+
+=================
+If statement 5
+=================
+
+#@if x = 3
+#@else
+gap> 2+2;
+4
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (else_clause
+      (test_case
+        (gap_prompt)
+        (test_case_input)
+        (test_case_output))
+    )
+  )
+)
+
+=================
+If statement 6
+=================
+
+#@if x = 3
+#@else
+
+
+gap> 2+2;
+4
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (else_clause
+      (test_case
+        (gap_prompt)
+        (test_case_input)
+        (test_case_output))
+    )
+  )
+)
+
+=================
+If statement 7
+=================
+
+#@if x = 3
+#@else
+#@fi
+
+---
+
+(test_file
+  (if_statement
+    (gap_expression)
+    (else_clause)
+  )
+)

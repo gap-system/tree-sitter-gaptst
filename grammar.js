@@ -24,7 +24,25 @@ module.exports = grammar({
       repeat($.comment),
       choice(
         $.local_statement,
+        $.if_statement,
       )
+    ),
+
+    if_statement: $ => seq(
+      '#@if',
+      field('condition', $.gap_expression),
+      repeat($.test_case),
+      repeat($.comment),
+      optional($.else_clause),
+      '#@fi',
+      '\n'
+    ),
+
+    else_clause: $ => seq(
+      '#@else',
+      '\n',
+      repeat($.test_case),
+      repeat($.comment),
     ),
 
     local_statement: $ => seq(

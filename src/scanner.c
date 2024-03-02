@@ -46,6 +46,12 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
             if (DEBUG_MODE)
               printf("%c", lexer->lookahead);
             continue;
+          } else if (lexer->lookahead == '\t') {
+            if (DEBUG_MODE) {
+              printf("\n%d\n", false);
+              printf("\nENDING\n");
+            }
+            return false;
           }
         }
         // New line without '> ' prompt, must be start
@@ -83,6 +89,23 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
           printf("\nENDING\n");
         }
         return true;
+      } else if (new_line && lexer->lookahead == '#') {
+        new_line = false;
+        empty_line_before = false;
+        lexer->mark_end(lexer);
+        advance(lexer);
+        if (DEBUG_MODE)
+          printf("%c", lexer->lookahead);
+        if (lexer->lookahead == '@') {
+          // special statement match
+          lexer->result_symbol = TEST_CASE_OUTPUT;
+          if (DEBUG_MODE) {
+            printf("\n%d\n", true);
+            printf("\nENDING\n");
+          }
+          return true;
+        }
+        continue;
       } else if (lexer->lookahead == '\n') {
         if (new_line) {
           empty_line_before = true;
