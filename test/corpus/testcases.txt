@@ -1,0 +1,279 @@
+============
+Test case 1
+============
+
+gap> a:=2;
+2
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 2
+============
+
+gap> a:=2;
+2
+gap> a:="Hello\nWorld";
+Hello
+World
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 3
+============
+
+gap> a:=2;
+2
+gap> a:="Hello\nWorld\n";
+Hello
+World
+
+gap> Concatenation(a, "Foobar");
+Hello
+World
+
+Foobar
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 3
+============
+
+gap> a:=2;
+2
+gap> a:="Hello\nWorld\n";
+Hello
+World
+
+gap> Concatenation(a, "Foobar");;
+gap> 2+2;
+4
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 4
+============
+
+gap> a:=2;
+2
+gap> a:="Hello\nWorld\n";
+Hello
+World
+
+gap> Concatenation(a, "Foobar");;
+gap> 2+2;
+4
+gap> Concatenation(a, "Foobar");;
+gap> 2+2;;
+
+gap> hello:=fail;
+fail
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 5
+============
+
+gap> a:=2;;
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 6
+============
+
+gap> a:=\
+> 2;;
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 7
+============
+
+gap> A:=[
+> [1, 2], [3, 4]
+> , [5, 6]];
+[ [1, 2], [3, 4], [5, 6] ]
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 8
+============
+
+gap> A:=[
+> [1, 2], [3, 4]
+> , [5, 6]];
+[ [1, 2], [3, 4], [5, 6] ]
+gap> B:= Concatenation(
+> "a", "b" 
+> );
+"ab"
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 9
+============
+
+gap> foo();
+g
+gap> foo();
+ga
+gap> foo();
+gap
+gap> foo();
+gap>
+gap> foo();
+gap>123;
+gap> foo();
+gap>
+>
+bar
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)

@@ -1,0 +1,134 @@
+============
+Comment 1
+============
+
+# Example
+gap> a:=2;
+2
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Comment 2
+============
+
+#
+gap> a:=2;
+2
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Comment 3
+============
+
+# Hello
+# World
+gap> a:=2;
+2
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Comment 4
+============
+
+# Hello
+#
+# World
+gap> a:=2;
+2
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Comment 5
+============
+
+# Hello
+#
+# World
+gap> a:=2;
+2
+# Test
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Comment 6
+============
+
+# Hello
+#
+# World
+gap> a:=2;
+2
+
+# Test
+# 
+gap> "Hello\nWorld";
+Hello
+World
+
+---
+
+(test_file
+  (test_case
+    (comment)
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (comment)
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)

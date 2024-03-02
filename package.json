@@ -1,0 +1,41 @@
+{
+  "name": "tree-sitter-gaptst",
+  "version": "0.0.1",
+  "description": "GAP test file grammar for tree-sitter",
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "GAP",
+    "GAP-system",
+    "GAPtst"
+  ],
+  "author": "Reinis Cirpons",
+  "license": "MIT",
+  "homepage": "https://github.com/reiniscirpons/tree-sitter-gaptst#readme",
+  "bugs": {
+    "url": "https://github.com/reiniscirpons/tree-sitter-gaptst/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reiniscirpons/tree-sitter-gaptst.git"
+  },
+  "main": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build --debug",
+    "test": "tree-sitter test && tree-sitter parse examples/*.tst --quiet --time"
+  },
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.21.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.gaptst",
+      "file-types": [
+        "tst"
+      ]
+    }
+  ]
+}

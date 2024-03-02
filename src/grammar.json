@@ -1,0 +1,79 @@
+{
+  "name": "GAPtst",
+  "rules": {
+    "test_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "test_case"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "test_case"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "test_case": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "comment"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gap_prompt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "test_case_input"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "test_case_output"
+        }
+      ]
+    },
+    "gap_prompt": {
+      "type": "STRING",
+      "value": "gap> "
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "#\\n|#[^@\\n].*?\\n"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "test_case_input"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "test_case_output"
+    }
+  ],
+  "inline": [],
+  "supertypes": []
+}
+

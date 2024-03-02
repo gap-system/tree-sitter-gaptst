@@ -1,0 +1,60 @@
+[
+  {
+    "type": "test_case",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "gap_prompt",
+          "named": true
+        },
+        {
+          "type": "test_case_input",
+          "named": true
+        },
+        {
+          "type": "test_case_output",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "test_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "test_case",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "gap_prompt",
+    "named": true
+  },
+  {
+    "type": "test_case_input",
+    "named": true
+  },
+  {
+    "type": "test_case_output",
+    "named": true
+  }
+]
