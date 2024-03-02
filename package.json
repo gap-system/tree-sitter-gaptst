@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-gaptst",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "GAP test file grammar for tree-sitter",
   "keywords": [
     "tree-sitter",
@@ -35,6 +35,12 @@
       "scope": "source.gaptst",
       "file-types": [
         "tst"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "injections": [
+        "queries/injections.scm"
       ]
     }
   ]
