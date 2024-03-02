@@ -12,7 +12,8 @@ module.exports = grammar({
       $.test_case,
       repeat(seq(
         $.test_case,
-      ))
+      )),
+      repeat($.comment),
     ),
 
     test_case: $ => seq(

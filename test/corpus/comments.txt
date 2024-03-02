@@ -132,3 +132,76 @@ World
     (test_case_input)
     (test_case_output))
 )
+
+============
+Comment 7
+============
+
+gap> a:=2;
+2
+
+# End of tests
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (comment)
+)
+
+============
+Comment 8
+============
+
+gap> a:=2;
+2
+
+# End of tests
+#
+# Hello
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (comment)
+  (comment)
+  (comment)
+)
+============
+Comment 9
+============
+
+gap> a:=2;
+2
+
+# Another test case
+gap> 2+2;
+4
+
+# End of tests
+#
+# Hello
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (comment)
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (comment)
+  (comment)
+  (comment)
+)

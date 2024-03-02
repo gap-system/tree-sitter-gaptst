@@ -277,3 +277,60 @@ bar
     (test_case_input)
     (test_case_output))
 )
+
+============
+Test case 10
+============
+
+gap> foobar(); # Comment
+baz
+gap> foobar() # Comment
+> ;
+baz
+gap> 1+1 # Comment
+> +2 # World
+> +10; # Comment
+14
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+============
+Test case 11
+============
+
+gap> foobar(); # Comment
+baz
+gap> # Comment
+gap> ## Comment
+
+---
+
+(test_file
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)

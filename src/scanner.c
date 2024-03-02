@@ -24,6 +24,8 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
                                               const bool *valid_symbols) {
   bool new_line = false;
   bool last_seen_semicolon = false;
+  bool inside_comment = false;
+  bool has_content = false;
   bool empty_line_before = false;
   if (DEBUG_MODE) {
     printf("START\n");
@@ -35,6 +37,8 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
   if (valid_symbols[TEST_CASE_INPUT] && !valid_symbols[TEST_CASE_OUTPUT]) {
     new_line = false;
     last_seen_semicolon = false;
+    inside_comment = false;
+    has_content = false;
     while (lexer->lookahead) {
       if (new_line) {
         lexer->mark_end(lexer);
@@ -55,16 +59,21 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
         // Check if properly terminated input, otherwise no match
         lexer->result_symbol = TEST_CASE_INPUT;
         if (DEBUG_MODE) {
-          printf("\n%d\n", last_seen_semicolon);
+          printf("\n%d\n", last_seen_semicolon || !has_content);
           printf("\nENDING\n");
         }
-        return last_seen_semicolon;
+        return last_seen_semicolon || !has_content;
       } else if (lexer->lookahead == '\n') {
         new_line = true;
+        inside_comment = false;
       } else if (lexer->lookahead == ';') {
         last_seen_semicolon = true;
-      } else if (!iswspace(lexer->lookahead)) {
+        has_content = true;
+      } else if (lexer->lookahead == '#') {
+        inside_comment = true;
+      } else if (!inside_comment && !iswspace(lexer->lookahead)) {
         last_seen_semicolon = false;
+        has_content = true;
       }
       advance(lexer);
       if (DEBUG_MODE)
@@ -74,10 +83,10 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
     lexer->mark_end(lexer);
     lexer->result_symbol = TEST_CASE_INPUT;
     if (DEBUG_MODE) {
-      printf("\n%d\n", last_seen_semicolon);
+      printf("\n%d\n", last_seen_semicolon || !has_content);
       printf("\nENDING\n");
     }
-    return last_seen_semicolon;
+    return last_seen_semicolon || !has_content;
   } else if (valid_symbols[TEST_CASE_OUTPUT]) {
     new_line = true;
     empty_line_before = false;
