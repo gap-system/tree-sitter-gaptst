@@ -5,7 +5,7 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
             "type": "CHOICE",
             "members": [
@@ -45,6 +45,10 @@
             {
               "type": "SYMBOL",
               "name": "local_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "exec_statement"
             },
             {
               "type": "SYMBOL",
@@ -145,6 +149,19 @@
         }
       ]
     },
+    "exec_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#@exec"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gap_expression"
+        }
+      ]
+    },
     "test_case": {
       "type": "SEQ",
       "members": [
@@ -174,8 +191,26 @@
       "value": "gap> "
     },
     "comment": {
-      "type": "PATTERN",
-      "value": "#\\n|#[^@\\n].*?\\n"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#\\n|#[^@\\n].*?\\n"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#|#[^@\\n].*?"
+            },
+            {
+              "type": "STRING",
+              "value": "\u0000"
+            }
+          ]
+        }
+      ]
     },
     "gap_expression": {
       "type": "PATTERN",

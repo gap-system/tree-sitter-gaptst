@@ -444,3 +444,46 @@ If statement 7
     (else_clause)
   )
 )
+
+=================
+Exec statement 1
+=================
+
+#@exec x := 3;
+
+gap> x+2;
+5
+
+---
+
+(test_file
+  (exec_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)
+
+=================
+Exec statement 2
+=================
+
+#@exec x := 3;
+#@exec y := 2;
+
+gap> x+y;
+5
+
+---
+
+(test_file
+  (exec_statement
+    (gap_expression))
+  (exec_statement
+    (gap_expression))
+  (test_case
+    (gap_prompt)
+    (test_case_input)
+    (test_case_output))
+)

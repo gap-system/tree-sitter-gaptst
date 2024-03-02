@@ -206,3 +206,19 @@ gap> 2+2;
   (comment)
   (comment)
 )
+
+============
+Comment 10
+============
+
+# Just comments
+#
+# Thats all
+
+---
+
+(test_file
+  (comment)
+  (comment)
+  (comment)
+)

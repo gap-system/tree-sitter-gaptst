@@ -13,7 +13,7 @@ module.exports = grammar({
 
   rules: {
     test_file: $ => seq(
-      repeat1(choice(
+      repeat(choice(
         $.test_case,
         $._statement
       )),
@@ -24,6 +24,7 @@ module.exports = grammar({
       repeat($.comment),
       choice(
         $.local_statement,
+        $.exec_statement,
         $.if_statement,
       )
     ),
@@ -50,6 +51,11 @@ module.exports = grammar({
       $.gap_expression
     ),
 
+    exec_statement: $ => seq(
+      '#@exec',
+      $.gap_expression
+    ),
+
     test_case: $ => seq(
       repeat($.comment),
       $.gap_prompt,
@@ -58,7 +64,10 @@ module.exports = grammar({
     ),
 
     gap_prompt: _ => 'gap> ',
-    comment: _ => /#\n|#[^@\n].*?\n/,
+    comment: _ => choice(
+      /#\n|#[^@\n].*?\n/,
+      seq(/#|#[^@\n].*?/, '\0')
+    ),
     gap_expression: _ => /.*?\n/,
   }
 });
