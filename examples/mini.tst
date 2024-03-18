@@ -6,12 +6,12 @@
 #@local x, y, z
 
 # Exec statement
-#@exec w :=10 ;
+#@exec w := 10 ;
 
 #@local u;
-#@exec 10+10;
+#@exec 10 + 10;
 
-gap> 1+1;
+gap> 1 + 1;
 2
 
 # Another test case
@@ -25,11 +25,10 @@ abHello
 World
 
 #If statements
-#@if 2+2=4
+#@if 2 + 2 = 4
 gap> Print(10);
 10
 
-# <- keyword.conditional
 # Else clause
 #@else
 gap> Print(200);

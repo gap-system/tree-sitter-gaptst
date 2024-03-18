@@ -9,9 +9,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -28,13 +27,12 @@ World
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line))
 )
 
 ============
@@ -57,17 +55,19 @@ Foobar
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line)
+    (output_line))
 )
 
 ============
@@ -88,21 +88,18 @@ gap> 2+2;
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -128,33 +125,26 @@ fail
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -162,13 +152,12 @@ Test case 5
 ============
 
 gap> a:=2;;
+
 ---
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
 )
 
 ============
@@ -177,14 +166,13 @@ Test case 6
 
 gap> a:=\
 > 2;;
+
 ---
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line))
 )
 
 ============
@@ -200,11 +188,10 @@ gap> A:=[
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -224,17 +211,15 @@ gap> B:= Concatenation(
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -260,29 +245,25 @@ bar
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line))
 )
 
 ============
@@ -303,20 +284,17 @@ gap> 1+1 # Comment
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line)
-      (test_case_input_line)
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -332,17 +310,12 @@ gap> ## Comment
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line))
 )
 
 ============
@@ -362,11 +335,14 @@ Syntax error: Record component name expected in stream:2
 ---
 
 (test_file
+  (comment)
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line)
+    (output_line)
+    (output_line)
+    (output_line))
 )

@@ -6,34 +6,30 @@ module.exports = grammar({
   ],
 
   externals: $ => [
-    $.test_case_input_line,
-    // Note, `test_case_output` can match the empty string 
-    $.test_case_output,
+    $.output_line,
   ],
 
   rules: {
-    test_file: $ => seq(
-      repeat(choice(
+    test_file: $ => repeat(
+      choice(
+        $.comment,
         $.test_case,
         $._statement
       )),
-      repeat($.comment),
-    ),
 
-    _statement: $ => seq(
-      repeat($.comment),
-      choice(
-        $.local_statement,
-        $.exec_statement,
-        $.if_statement,
-      )
+    _statement: $ => choice(
+      $.local_statement,
+      $.exec_statement,
+      $.if_statement,
     ),
 
     if_statement: $ => seq(
       '#@if',
       field('condition', $.gap_expression),
-      repeat($.test_case),
-      repeat($.comment),
+      repeat(choice(
+        $.comment,
+        $.test_case,
+      )),
       optional($.else_clause),
       '#@fi',
       '\n'
@@ -42,8 +38,10 @@ module.exports = grammar({
     else_clause: $ => seq(
       '#@else',
       '\n',
-      repeat($.test_case),
-      repeat($.comment),
+      repeat(choice(
+        $.comment,
+        $.test_case,
+      )),
     ),
 
     local_statement: $ => seq(
@@ -57,27 +55,15 @@ module.exports = grammar({
     ),
 
     test_case: $ => seq(
-      repeat($.comment),
-      $.test_case_input,
-      $.test_case_output,
-    ),
-
-    test_case_input: $ => seq(
       'gap> ',
-      $.test_case_input_line,
-      repeat(seq(
-        '> ',
-        $.test_case_input_line,
+      alias($.gap_expression, $.input_line),
+      repeat(choice(
+        seq('> ', alias($.gap_expression, $.input_line)),
+        $.output_line,
       )),
     ),
 
-    comment: _ => choice(
-      /#\n|#[^@\n].*?\n/,
-      seq(/#|#[^@\n].*?/, '\0')
-    ),
-    gap_expression: _ => choice(
-      /[^\n]*?\n/,
-      seq(/[^\n]*?/, '\0'),
-    )
+    comment: _ => /\n?#([^@\n].*)?\n*/,
+    gap_expression: _ => /[^\n]*?\n?/,
   }
 });

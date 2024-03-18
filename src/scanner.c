@@ -2,9 +2,8 @@
 #include <stdio.h>
 #include <wctype.h>
 
-enum TokenType { TEST_CASE_INPUT_LINE, TEST_CASE_OUTPUT };
+enum TokenType { OUTPUT_LINE };
 
-const bool DEBUG_MODE = false;
 const char *GAP_PROMPT = "gap> ";
 
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
@@ -14,130 +13,66 @@ static inline bool advance_word(TSLexer *lexer, const char *word) {
     if (lexer->lookahead != word[i])
       return false;
     advance(lexer);
-    if (DEBUG_MODE)
-      printf("%c", lexer->lookahead);
   }
   return true;
 }
 
 bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
                                               const bool *valid_symbols) {
-  bool new_line = false;
-  bool empty_line_before = false;
-  if (DEBUG_MODE) {
-    printf("START\n");
-    printf("%d", valid_symbols[TEST_CASE_INPUT_LINE]);
-    printf("%d", valid_symbols[TEST_CASE_OUTPUT]);
-    printf("\n%c", lexer->lookahead);
-  }
+  // It there is no more input, stop scanning
+  if (!lexer->lookahead)
+    return false;
 
-  if (valid_symbols[TEST_CASE_INPUT_LINE] && !valid_symbols[TEST_CASE_OUTPUT]) {
-    new_line = false;
-    while (lexer->lookahead) {
-      if (new_line) {
-        lexer->mark_end(lexer);
-        lexer->result_symbol = TEST_CASE_INPUT_LINE;
-        if (DEBUG_MODE) {
-          printf("\n%d\n", true);
-          printf("\nENDING\n");
-        }
-        return true;
-      } else if (lexer->lookahead == '\n') {
-        new_line = true;
-      }
-      advance(lexer);
-      if (DEBUG_MODE)
-        printf("%c", lexer->lookahead);
-    }
-    // Ran out of input
-    lexer->mark_end(lexer);
-    lexer->result_symbol = TEST_CASE_INPUT_LINE;
-    if (DEBUG_MODE) {
-      printf("\n%d\n", true);
-      printf("\nENDING\n");
-    }
-    return true;
-  } else if (valid_symbols[TEST_CASE_OUTPUT]) {
-    new_line = true;
-    empty_line_before = false;
-    if (lexer->lookahead == '>') {
+  if (valid_symbols[OUTPUT_LINE]) {
+    if (lexer->lookahead == '\n') {
+      // Check if we have blank line followed by comment
       lexer->mark_end(lexer);
-      new_line = false;
       advance(lexer);
-      if (DEBUG_MODE)
-        printf("%c", lexer->lookahead);
-      if (lexer->lookahead == ' ') {
-        if (DEBUG_MODE) {
-          printf("\n%d\n", false);
-          printf("\nENDING\n");
-        }
+      if (lexer->lookahead == '#') {
         return false;
       }
+      lexer->mark_end(lexer);
+      lexer->result_symbol = OUTPUT_LINE;
+      return true;
+    } else if (lexer->lookahead == '#') {
+      // Check if we have a statement
+      lexer->mark_end(lexer);
+      advance(lexer);
+      if (lexer->lookahead == '@') {
+        return false;
+      }
+    } else if (lexer->lookahead == '>') {
+      // Check if we have a continuation prompt
+      lexer->mark_end(lexer);
+      advance(lexer);
+      if (lexer->lookahead == ' ') {
+        return false;
+      }
+    } else if (lexer->lookahead == GAP_PROMPT[0]) {
+      // Check if we have a gap> prompt
+      lexer->mark_end(lexer);
+      if (advance_word(lexer, GAP_PROMPT)) {
+        return false;
+      }
+    } else {
+      // Otherwise we are safe to consume first character of output
+      advance(lexer);
     }
+
     while (lexer->lookahead) {
-      if (empty_line_before && lexer->lookahead == '#') {
-        lexer->mark_end(lexer);
-        lexer->result_symbol = TEST_CASE_OUTPUT;
-        if (DEBUG_MODE) {
-          printf("\n%d\n", true);
-          printf("\nENDING\n");
-        }
-        return true;
-      } else if (new_line && lexer->lookahead == '#') {
-        new_line = false;
-        empty_line_before = false;
-        lexer->mark_end(lexer);
+      if (lexer->lookahead == '\n') {
         advance(lexer);
-        if (DEBUG_MODE)
-          printf("%c", lexer->lookahead);
-        if (lexer->lookahead == '@') {
-          // special statement match
-          lexer->result_symbol = TEST_CASE_OUTPUT;
-          if (DEBUG_MODE) {
-            printf("\n%d\n", true);
-            printf("\nENDING\n");
-          }
-          return true;
-        }
-        continue;
-      } else if (lexer->lookahead == '\n') {
-        if (new_line) {
-          empty_line_before = true;
-        }
-        new_line = true;
-      } else if (new_line) {
-        new_line = false;
-        empty_line_before = false;
-        if (lexer->lookahead == GAP_PROMPT[0]) {
-          lexer->mark_end(lexer);
-          if (advance_word(lexer, GAP_PROMPT)) {
-            lexer->result_symbol = TEST_CASE_OUTPUT;
-            if (DEBUG_MODE) {
-              printf("\n%d\n", true);
-              printf("\nENDING\n");
-            }
-            return true;
-          }
-          continue;
-        }
+        break;
       }
       advance(lexer);
-      if (DEBUG_MODE)
-        printf("%c", lexer->lookahead);
     }
-    // Ran out of input
+
+    // consumed a newline or ran out of input
     lexer->mark_end(lexer);
-    lexer->result_symbol = TEST_CASE_OUTPUT;
-    if (DEBUG_MODE) {
-      printf("\n%d\n", true);
-      printf("\nENDING\n");
-    }
+    lexer->result_symbol = OUTPUT_LINE;
     return true;
   }
-  if (DEBUG_MODE) {
-    printf("\n%d\n", false);
-    printf("\nENDING\n");
-  }
+
   return false;
 }
 

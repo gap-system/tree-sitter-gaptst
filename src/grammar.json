@@ -2,59 +2,39 @@
   "name": "GAPtst",
   "rules": {
     "test_file": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "test_case"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_statement"
-              }
-            ]
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
             "type": "SYMBOL",
             "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "test_case"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_statement"
           }
-        }
-      ]
+        ]
+      }
     },
     "_statement": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "comment"
-          }
+          "type": "SYMBOL",
+          "name": "local_statement"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "local_statement"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "exec_statement"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "if_statement"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "exec_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "if_statement"
         }
       ]
     },
@@ -76,15 +56,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "test_case"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "comment"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "test_case"
+              }
+            ]
           }
         },
         {
@@ -123,15 +105,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "test_case"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "comment"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "test_case"
+              }
+            ]
           }
         }
       ]
@@ -166,45 +150,44 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "comment"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "test_case_input"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "test_case_output"
-        }
-      ]
-    },
-    "test_case_input": {
-      "type": "SEQ",
-      "members": [
-        {
           "type": "STRING",
           "value": "gap> "
         },
         {
-          "type": "SYMBOL",
-          "name": "test_case_input_line"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "gap_expression"
+          },
+          "named": true,
+          "value": "input_line"
         },
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "STRING",
-                "value": "> "
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "> "
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "gap_expression"
+                    },
+                    "named": true,
+                    "value": "input_line"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
-                "name": "test_case_input_line"
+                "name": "output_line"
               }
             ]
           }
@@ -212,48 +195,12 @@
       ]
     },
     "comment": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "#\\n|#[^@\\n].*?\\n"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "#|#[^@\\n].*?"
-            },
-            {
-              "type": "STRING",
-              "value": "\u0000"
-            }
-          ]
-        }
-      ]
+      "type": "PATTERN",
+      "value": "\\n?#([^@\\n].*)?\\n*"
     },
     "gap_expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^\\n]*?\\n"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[^\\n]*?"
-            },
-            {
-              "type": "STRING",
-              "value": "\u0000"
-            }
-          ]
-        }
-      ]
+      "type": "PATTERN",
+      "value": "[^\\n]*?\\n?"
     }
   },
   "extras": [
@@ -267,11 +214,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "test_case_input_line"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "test_case_output"
+      "name": "output_line"
     }
   ],
   "inline": [

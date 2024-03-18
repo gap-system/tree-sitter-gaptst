@@ -1,4 +1,4 @@
-(test_case_output) @string.documentation
+(output_line) @string.documentation
 
 [
  "#@local"

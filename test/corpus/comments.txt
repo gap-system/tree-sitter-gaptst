@@ -9,11 +9,10 @@ gap> a:=2;
 ---
 
 (test_file
+  (comment)
   (test_case
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -27,11 +26,10 @@ gap> a:=2;
 ---
 
 (test_file
+  (comment)
   (test_case
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -46,12 +44,11 @@ gap> a:=2;
 ---
 
 (test_file
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -67,13 +64,12 @@ gap> a:=2;
 ---
 
 (test_file
+  (comment)
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
 )
 
 ============
@@ -83,20 +79,20 @@ Comment 5
 # Hello
 #
 # World
-gap> a:=2;
+gap> a:=2; Print("# Test\n");
 2
 # Test
 
 ---
 
 (test_file
+  (comment)
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line))
 )
 
 ============
@@ -118,19 +114,18 @@ World
 ---
 
 (test_file
+  (comment)
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
+  (comment)
+  (comment)
   (test_case
-    (comment)
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line)
+    (output_line))
 )
 
 ============
@@ -146,9 +141,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (comment)
 )
 
@@ -167,9 +161,8 @@ gap> a:=2;
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (comment)
   (comment)
   (comment)
@@ -194,14 +187,12 @@ gap> 2+2;
 
 (test_file
   (test_case
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
+  (comment)
   (test_case
-    (comment)
-    (test_case_input
-      (test_case_input_line))
-    (test_case_output))
+    (input_line)
+    (output_line))
   (comment)
   (comment)
   (comment)
@@ -222,3 +213,17 @@ Comment 10
   (comment)
   (comment)
 )
+
+============
+Comment 11
+============
+
+# Comment then space
+
+gap> a:=2;
+2
+
+# Comment then space
+
+gap> a:=2;
+2

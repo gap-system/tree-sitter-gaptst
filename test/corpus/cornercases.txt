@@ -1,0 +1,264 @@
+============
+Interleaved input and output 1
+============
+
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+> else
+>   Print("World\n");
+> fi;
+Hello
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+Hello
+> else
+>   Print("World\n");
+> fi;
+
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (input_line))
+)
+
+============
+Interleaved input and output 2
+============
+
+gap> if 2+2 = 4 then
+Hello
+>   Print("Hello\n");
+> else
+>   Print("World\n");
+> fi;
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+Hello
+> else
+>   Print("World\n");
+> fi;
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+> else
+Hello
+>   Print("World\n");
+> fi;
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+> else
+>   Print("World\n");
+Hello
+> fi;
+gap> if 2+2 = 4 then
+>   Print("Hello\n");
+> else
+>   Print("World\n");
+> fi;
+Hello
+
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (input_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
+)
+
+============
+Interleaved input and output 3
+============
+
+gap> if 2+2 = 4 then
+>   Print("Hello\nWorld\n");
+> else
+>   Print("World\n");
+> fi;
+Hello
+World
+gap> if 2+2 = 4 then
+>   Print("Hello\nWorld\n");
+Hello
+> else
+>   Print("World\n");
+> fi;
+World
+gap> if 2+2 = 4 then
+>   Print("Hello\nWorld\n");
+Hello
+> else
+>   Print("World\n");
+World
+> fi;
+gap> if 2+2 = 4 then
+Hello
+>   Print("Hello\nWorld\n");
+> else
+World
+>   Print("World\n");
+> fi;
+
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (output_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line))
+  (test_case
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line))
+  (test_case
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line)
+    (input_line))
+)
+
+============
+Untestable test case 1
+============
+
+gap> if 2+2 = 4 then
+>   Print("Hello\n> Print(\"Hello\\n\");\n");
+> else
+>   Print("World");
+> fi;
+Hello
+> Print("Hello\n");
+
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (input_line)
+    (output_line)
+    (input_line))
+)
+
+============
+EOF tests 1
+============
+
+gap> 1+1;;
+---
+
+(test_file
+  (test_case
+    (input_line))
+)
+
+============
+EOF tests 2
+============
+
+gap> 1+1;
+2
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (output_line))
+)
+
+============
+EOF tests 3
+============
+
+gap> 1+2+\
+> 3;;
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (input_line))
+)
+
+============
+EOF tests 4
+============
+
+gap> 1+2+\
+> 3;
+3
+
+#Hello
+---
+
+(test_file
+  (test_case
+    (input_line)
+    (input_line)
+    (output_line))
+  (comment)
+)
