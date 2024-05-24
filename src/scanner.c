@@ -1,6 +1,4 @@
 #include "tree_sitter/parser.h"
-#include <stdio.h>
-#include <wctype.h>
 
 enum TokenType { OUTPUT_LINE };
 
@@ -17,7 +15,7 @@ static inline bool advance_word(TSLexer *lexer, const char *word) {
   return true;
 }
 
-bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
+bool tree_sitter_gaptst_external_scanner_scan(void *payload, TSLexer *lexer,
                                               const bool *valid_symbols) {
   // It there is no more input, stop scanning
   if (!lexer->lookahead)
@@ -76,12 +74,12 @@ bool tree_sitter_GAPtst_external_scanner_scan(void *payload, TSLexer *lexer,
   return false;
 }
 
-unsigned tree_sitter_GAPtst_external_scanner_serialize(void *payload,
+unsigned tree_sitter_gaptst_external_scanner_serialize(void *payload,
                                                        char *buffer) {
   return 0;
 }
-void tree_sitter_GAPtst_external_scanner_deserialize(void *payload,
+void tree_sitter_gaptst_external_scanner_deserialize(void *payload,
                                                      const char *buffer,
                                                      unsigned length) {}
-void *tree_sitter_GAPtst_external_scanner_create() { return NULL; }
-void tree_sitter_GAPtst_external_scanner_destroy(void *payload) {}
+void *tree_sitter_gaptst_external_scanner_create() { return NULL; }
+void tree_sitter_gaptst_external_scanner_destroy(void *payload) {}

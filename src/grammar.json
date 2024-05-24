@@ -1,5 +1,5 @@
 {
-  "name": "GAPtst",
+  "name": "gaptst",
   "rules": {
     "test_file": {
       "type": "REPEAT",
@@ -222,4 +222,3 @@
   ],
   "supertypes": []
 }
-
