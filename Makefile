@@ -1,46 +1,51 @@
-GAP_DIR=temp_gap_for_tests
+CORPUS_VERSION=v4.13.0
 EXAMPLES_DIR=./examples
 
-# Recursively get files matching given extension regex from input directory,
-# flatten and copy to output directory.
-define get_files
-	$(eval $@_REGEX = $(1))
-	$(eval $@_INPUT_DIRECTORY = $(2))
-	$(eval $@_OUTPUT_DIRECTORY = $(3))
-	find ${$@_INPUT_DIRECTORY} -type f -regextype sed -regex ${$@_REGEX} -exec sh -c 'new=${$@_OUTPUT_DIRECTORY}/temp-$$(echo "{}" | tr "/" "-" | tr " " "_"); cp "{}" "$$new"' \;
-endef
+.PHONY: compile format corpus test_quick test_gap test_pkg test_all clean distclean
 
-.PHONY: clean create_gap_tests create_pkg_tests test_gap test_pkg test_all
+compile: grammar.js src/scanner.c
+	tree-sitter generate --no-bindings
 
-$(GAP_DIR):
-	git clone --depth=1 https://github.com/gap-system/gap $(GAP_DIR)
+format:
+	npm run format
 
-$(GAP_DIR)/pkg: $(GAP_DIR)
-	cd $(GAP_DIR) && ./autogen.sh && ./configure
-	cd $(GAP_DIR) && make bootstrap-pkg-full
+corpus:
+	./etc/extract_corpus.sh -v $(CORPUS_VERSION) temp_extract_corpus
+	mv ./temp_extract_corpus/corpus_gap_tst.tar.gz $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz
+	mv ./temp_extract_corpus/corpus_pkg_tst.tar.gz $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz
 
-create_gap_tests: $(GAP_DIR)
-	mkdir -p $(EXAMPLES_DIR)/temp_gap
-	@$(call get_files, ".*\.\(tst\)", $(GAP_DIR)/grp, $(EXAMPLES_DIR)/temp_gap)
-	@$(call get_files, ".*\.\(tst\)", $(GAP_DIR)/lib, $(EXAMPLES_DIR)/temp_gap)
-	@$(call get_files, ".*\.\(tst\)", $(GAP_DIR)/tst, $(EXAMPLES_DIR)/temp_gap)
+# TODO: Eventually change this to download the tarball from a github release
+$(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz: corpus
+$(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz: corpus
 
-create_pkg_tests: $(GAP_DIR)/pkg
-	mkdir -p $(EXAMPLES_DIR)/temp_pkg
-	@$(call get_files, ".*\.\(tst\)", $(GAP_DIR)/pkg, $(EXAMPLES_DIR)/temp_pkg)
+$(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION):
+	mkdir -p $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION)
+	tar -xzf $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz -C $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION)
 
-test_gap: create_gap_tests
-	tree-sitter parse '$(EXAMPLES_DIR)/temp_gap/*.tst' --quiet --stat
+$(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION):
+	mkdir -p $(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION)
+	tar -xzf $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz -C $(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION)
 
-test_pkg: create_pkg_tests
-	tree-sitter parse '$(EXAMPLES_DIR)/temp_pkg/*.tst' --quiet --stat
+test_quick: compile
+	tree-sitter test
 
-test_all: create_gap_tests create_pkg_tests
-	tree-sitter parse '$(EXAMPLES_DIR)/**/*.tst' --quiet --stat
+test_gap: $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION) compile
+	tree-sitter parse '$(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION)/*.tst' --quiet --stat
+
+test_pkg: $(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION) compile
+	tree-sitter parse '$(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION)/*.tst' --quiet --statA
+
+test_all: test_quick $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION) $(EXAMPLES_DIR)/temp_corpus_pkg_tst_$(CORPUS_VERSION)
+	tree-sitter parse '$(EXAMPLES_DIR)/temp_corpus_*/*.tst' --quiet --stat
+
+image-example-parse.svg: grammar.js src/scanner.c ./etc/visualize_parse_tree.py ./examples/alternating_group.tst
+	./etc/visualize_parse_tree.py -i ./examples/alternating_group.tst -o ./image-example-parse.svg
+
 
 clean:
-	rm -rf $(EXAMPLES_DIR)/temp_gap
-	rm -rf $(EXAMPLES_DIR)/temp_pkg
+	rm -rf $(EXAMPLES_DIR)/temp_*
 
 distclean: clean
-	rm -rf ./$(GAP_DIR)
+	rm $(EXAMPLES_DIR)/corpus_gap_tst_*.tar.gz
+	rm $(EXAMPLES_DIR)/corpus_pkg_tst_*.tar.gz
+	rm -rf ./temp_*
