@@ -1,4 +1,5 @@
-CORPUS_VERSION=v4.13.0
+CORPUS_VERSION=v4.13.1
+GRAMMAR_VERSION=v0.4.0
 EXAMPLES_DIR=./examples
 RELEASE_PREFIX=https://github.com/gap-system/tree-sitter-gaptst/releases/download
 
@@ -16,10 +17,10 @@ corpus:
 	mv ./temp_extract_corpus/corpus_pkg_tst.tar.gz $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz
 
 $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz:
-	curl -L $(RELEASE_PREFIX)/v0.4.0/corpus_gap_tst_$(CORPUS_VERSION).tar.gz > $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz
+	curl -L $(RELEASE_PREFIX)/$(GRAMMAR_VERSION)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz > $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz
 
 $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz:
-	curl -L $(RELEASE_PREFIX)/v0.4.0/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz > $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz
+	curl -L $(RELEASE_PREFIX)/$(GRAMMAR_VERSION)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz > $(EXAMPLES_DIR)/corpus_pkg_tst_$(CORPUS_VERSION).tar.gz
 
 $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION): $(EXAMPLES_DIR)/corpus_gap_tst_$(CORPUS_VERSION).tar.gz
 	mkdir -p $(EXAMPLES_DIR)/temp_corpus_gap_tst_$(CORPUS_VERSION)
