@@ -1,17 +1,17 @@
 (output_line) @string.documentation
 
 [
- "#@local"
- "#@exec"
+  "#@local"
+  "#@exec"
 ] @keyword
 
 [
- "gap> "
- "> "
+  "gap> "
+  "> "
 ] @keyword.debug
 
 [
- "#@if"
- "#@else"
- "#@fi"
+  "#@if"
+  "#@else"
+  "#@fi"
 ] @keyword.conditional
