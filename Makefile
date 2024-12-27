@@ -1,5 +1,5 @@
 CORPUS_VERSION=v4.14.0
-GRAMMAR_VERSION=v0.4.1
+GRAMMAR_VERSION=v0.4.2
 EXAMPLES_DIR=./examples
 RELEASE_PREFIX=https://github.com/gap-system/tree-sitter-gaptst/releases/download
 

@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-gaptst",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "gap test file grammar for tree-sitter",
   "keywords": [
     "tree-sitter",
